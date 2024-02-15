@@ -1,1 +1,1 @@
-This is my second sentence in some other branch called conflict2.
+delete this
