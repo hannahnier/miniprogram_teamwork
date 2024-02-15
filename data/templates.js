@@ -1,5 +1,13 @@
 import { colors } from "./colors.js";
 
+export const introTemplate = `${colors.magenta}
+0===================================================0
+0                                                   0
+0                ${colors.yellow}T E A M W O R K${colors.blue}                    0
+0                                                   0
+0===================================================0${colors.reset}
+`;
+
 export const mainMenuTemplate = `
 0=================___Main Menu___===================0
 0                                                   0
@@ -34,24 +42,25 @@ export function displayGlobalStorage(storageArr, order) {
   }, 0);
   console.log(`
 
-******** Current task list ********
-        (${order})
+***** Your tasks *****
 
-Tasks total: ${storageArr.reduce((acc) => acc + 1, 0)}
-Average Priority: ${Math.round(prioSum / storageArr.length)}
+  (${order})
 
------------------ `);
+Your team has currently ${storageArr.reduce(
+    (acc) => acc + 1,
+    0
+  )} tasks with an average priority of "${Math.round(
+    prioSum / storageArr.length
+  )}".
+
+`);
 
   storageArr.map((obj, index) => {
     console.log(
       `
-${index + 1}.) ${obj.taskName}
-
-Author: ${obj.author}
-Date: ${obj.date}
-Priority: ${obj.priority}
-
------------------
+${index + 1}.) ${obj.taskName}, 
+    Published by ${obj.author} on ${obj.date}.
+    Priority: ${obj.priority}
 `
     );
   });
