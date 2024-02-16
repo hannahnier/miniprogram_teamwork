@@ -33,35 +33,3 @@ export const sortMenuTemplate = `
 0                                                   0
 0===================================================0
 `;
-
-// den globalen Storage grafisch ausgeben lassen:
-
-export function displayGlobalStorage(storageArr, order) {
-  let prioSum = storageArr.reduce((acc, obj) => {
-    return acc + Number(obj.priority);
-  }, 0);
-  console.log(`
-
-***** Your tasks *****
-
-  (${order})
-
-Your team has currently ${storageArr.reduce(
-    (acc) => acc + 1,
-    0
-  )} tasks with an average priority of "${Math.round(
-    prioSum / storageArr.length
-  )}".
-
-`);
-
-  storageArr.map((obj, index) => {
-    console.log(
-      `
-${index + 1}.) ${obj.taskName}, 
-    Published by ${obj.author} on ${obj.date}.
-    Priority: ${obj.priority}
-`
-    );
-  });
-}
